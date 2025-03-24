@@ -1,6 +1,6 @@
 export const GROQ_CONFIG = {
   apiUrl: 'https://api.groq.com/openai/v1/chat/completions',
-  model: 'mixtral-8x7b-32768',
+  model: 'llama-3.2-11b-vision-preview',
   temperature: 0.1,
   maxTokens: 500,
   systemPrompt: `You are an expert content analyzer specializing in distinguishing between AI-generated and human-written text, including classical literature. Your analysis must be extremely precise.
