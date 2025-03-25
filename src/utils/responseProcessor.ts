@@ -11,7 +11,7 @@ export function processApiResponse(response: ApiResponse): DetectionResult {
   // Extract classification and confidence
   const aiMatch = content.match(/^AI-GENERATED\s+(\d{1,3})%/i);
   const humanMatch = content.match(/^HUMAN-WRITTEN\s+(\d{1,3})%/i);
-  
+
   if (!aiMatch && !humanMatch) {
     console.error('Invalid classification format:', content);
     throw new Error('Invalid response format: Missing classification');
@@ -31,4 +31,5 @@ export function processApiResponse(response: ApiResponse): DetectionResult {
 
   console.log('Processed detection result:', result);
   return result;
+  
 }

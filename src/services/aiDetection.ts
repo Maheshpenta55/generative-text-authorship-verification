@@ -1,9 +1,11 @@
 import { type DetectionResult, type TextCharacteristics } from '../types/detection';
 import { processApiResponse } from '../utils/responseProcessor';
 import { GROQ_CONFIG } from '../config/groq';
+import { OPENAI_CONFIG } from '../config/openai';
 import { ApiError, getErrorMessage } from '../utils/errorHandler';
 import { API_PROVIDERS, CURRENT_PROVIDER } from '../config/api';
 import { analyzeTextCharacteristics } from './textAnalysis';
+
 
 const API_KEY = import.meta.env.VITE_AI_DETECTION_API_KEY;
 
@@ -18,7 +20,7 @@ export async function analyzeText(text: string): Promise<DetectionResult> {
 
   try {
     const characteristics = analyzeTextCharacteristics(text);
-    const config = CURRENT_PROVIDER === API_PROVIDERS.GROQ ? GROQ_CONFIG : GROQ_CONFIG;
+    const config = CURRENT_PROVIDER === API_PROVIDERS.GROQ ? GROQ_CONFIG : OPENAI_CONFIG;
     
     const response = await fetch(config.apiUrl, {
       method: 'POST',
@@ -42,6 +44,7 @@ export async function analyzeText(text: string): Promise<DetectionResult> {
 - Has irregular structure: ${characteristics.hasIrregularStructure}
 - Contains unique imagery: ${characteristics.hasUniqueImagery}
 - Uses modern language: ${characteristics.isModernLanguage}
+- Has conversational tone: ${characteristics.hasConversationalTone}
 
 Text to analyze:
 ${text}`

@@ -31,4 +31,5 @@ export interface TextCharacteristics {
   hasIrregularStructure: boolean;
   hasUniqueImagery: boolean;
   isModernLanguage: boolean;
+  hasConversationalTone: boolean;
 }

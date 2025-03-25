@@ -102,7 +102,7 @@ export default function TextAnalyzer() {
                 Confidence: {result.confidence.toFixed(1)}%
               </p>
               {result.details && (
-                <p className="text-sm text-gray-400 mt-2">{result.details}</p>
+                <p className="text-sm text-white-400 mt-2">{result.details}</p>
               )}
             </div>
           </div>
